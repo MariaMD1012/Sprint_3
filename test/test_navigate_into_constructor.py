@@ -16,7 +16,9 @@ class TestConstructor:
 
     def test_section_check_bread_true(self, driver):
         driver.get(link)
+        # driver.find_element(*MainPage.bread_element).click()
         bread_element = driver.find_element(*MainPage.bread_element)
+        # bread_element.click()
         current_element = driver.find_element(*MainPage.active_section)
         assert bread_element.text == current_element.text
 
@@ -26,7 +28,6 @@ class TestConstructor:
         sauce_element.click()
         current_element = driver.find_element(*MainPage.active_section)
         assert sauce_element.text == current_element.text
-
     def test_section_check_fillings_true(self, driver):
         driver.get(link)
         filling_element = driver.find_element(*MainPage.filling_element)

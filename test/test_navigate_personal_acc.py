@@ -1,5 +1,5 @@
-from conftest import *
-from utils import *
+from autorisation_form import *
+from pages.helpers import wait_el
 
 
 class TestNavigateToPersonalAccount:
@@ -7,9 +7,7 @@ class TestNavigateToPersonalAccount:
         driver.get(link)
         driver.find_element(*AppHeader.link_acc).click()
         wait_el(driver, AuthorizationForm.title_login_page)
-        driver.find_element(*AuthorizationForm.email).send_keys(email)
-        driver.find_element(*AuthorizationForm.password).send_keys(password)
-        driver.find_element(*AuthorizationForm.button_login).click()
+        authorization_main_page(driver, email, password)
         wait_el(driver, MainPage.title_main_page)
         driver.find_element(*AppHeader.link_acc).click()
         current_url = driver.current_url
